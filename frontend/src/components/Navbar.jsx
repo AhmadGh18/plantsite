@@ -1,16 +1,33 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import logo from "../assets/images/logonobg1.png";
 import { FaBars, FaTimes } from "react-icons/fa";
 
 const Navbar = () => {
   const [menuOpen, setMenuOpen] = useState(false);
+  const [scrolled, setScrolled] = useState(false);
 
   const toggleMenu = () => {
     setMenuOpen((prev) => !prev);
   };
 
+  useEffect(() => {
+    const handleScroll = () => {
+      setScrolled(window.scrollY > 400); // Trigger after 50px scroll
+    };
+
+    window.addEventListener("scroll", handleScroll);
+    return () => window.removeEventListener("scroll", handleScroll);
+  }, []);
+
   return (
-    <nav className="w-full  relative top-0 left-0  shadow-md z-50">
+    <nav
+      className={`w-full fixed top-0 left-0 z-50 transition-colors duration-500 ${
+        scrolled
+          ? "bg-black text-white shadow-md"
+          : "bg-transparent md:text-white text-black"
+      }`}
+    >
+      {" "}
       <div className="flex items-center justify-between py-4 px-6 md:px-12">
         <img src={logo} alt="Logo" className="h-14 object-contain" />
 
@@ -35,10 +52,9 @@ const Navbar = () => {
 
         {/* Mobile Hamburger Icon */}
         <div className="md:hidden text-2xl cursor-pointer" onClick={toggleMenu}>
-          {menuOpen ? <FaTimes /> : <FaBars />}
+          {menuOpen ? <FaTimes /> : <FaBars className="text-white" />}
         </div>
       </div>
-
       {/* Mobile Menu */}
       <div
         className={`md:hidden flex flex-col items-center gap-4  absolute bg-white !justify-center  w-full overflow-hidden transition-all duration-300 ease-in-out ${

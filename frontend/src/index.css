@@ -4,5 +4,23 @@
 
 @theme {
     --color-primary: #5B9138;
+    --color-secondorimary: #014C2E;
     --font-mainfont: "Signika Negative", sans-serif;
+
+}
+
+@keyframes zoom {
+
+    0%,
+    100% {
+        transform: scale(1);
+    }
+
+    50% {
+        transform: scale(1.05);
+    }
+}
+
+.animate-zoom {
+    animation: zoom 12s ease-in-out infinite;
 }
