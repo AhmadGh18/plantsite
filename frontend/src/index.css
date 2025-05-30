@@ -5,6 +5,8 @@
 @theme {
     --color-primary: #5B9138;
     --color-secondorimary: #014C2E;
+    --color-secondgreen: #5B9138;
+
     --font-mainfont: "Signika Negative", sans-serif;
 
 }
@@ -23,4 +25,56 @@
 
 .animate-zoom {
     animation: zoom 12s ease-in-out infinite;
+}
+
+.hover-fill-from-bottom {
+    position: relative;
+    overflow: hidden;
+    z-index: 0;
+}
+
+.hover-fill-from-bottom::before {
+    content: "";
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    width: 100%;
+    height: 0%;
+    background-color: #014C2E;
+    /* change to your hover color */
+    color: white !important;
+    z-index: -1;
+    transition: height 0.3s ease;
+}
+
+.hover-fill-from-bottom:hover::before {
+    height: 100%;
+}
+
+
+
+.hover-fill-from-bottom2 {
+    position: relative;
+    overflow: hidden;
+
+    z-index: 0;
+}
+
+.hover-fill-from-bottom2::before {
+    content: "";
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    background-color: white;
+    width: 100%;
+    height: 0%;
+    color: #014C2E !important;
+
+    z-index: -1;
+    transition: height 0.3s ease;
+}
+
+.hover-fill-from-bottom2:hover::before {
+
+    height: 100%;
 }

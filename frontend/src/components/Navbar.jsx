@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from "react";
-import logo from "../assets/images/logonobg1.png";
+import logo from "../assets/images/fflogo.png";
 import { FaBars, FaTimes } from "react-icons/fa";
 
 const Navbar = () => {
@@ -23,16 +23,16 @@ const Navbar = () => {
     <nav
       className={`w-full fixed top-0 left-0 z-50 transition-colors duration-500 ${
         scrolled
-          ? "bg-black text-white shadow-md"
+          ? "bg-black md:text-white text-black shadow-md"
           : "bg-transparent md:text-white text-black"
       }`}
     >
       {" "}
       <div className="flex items-center justify-between py-4 px-6 md:px-12">
-        <img src={logo} alt="Logo" className="h-14 object-contain" />
+        <img src={logo} alt="Logo" className="h-16 object-contain" />
 
         {/* Desktop Menu */}
-        <div className="hidden md:flex gap-8 text-lg font-semibold   items-center">
+        <div className="hidden md:flex gap-8 text-lg font-semibold   items-center !text-black md:!text-white ">
           <a href="#" className="hover:text-primary transition">
             Home
           </a>
@@ -52,7 +52,11 @@ const Navbar = () => {
 
         {/* Mobile Hamburger Icon */}
         <div className="md:hidden text-2xl cursor-pointer" onClick={toggleMenu}>
-          {menuOpen ? <FaTimes /> : <FaBars className="text-white" />}
+          {menuOpen ? (
+            <FaTimes className="text-white" />
+          ) : (
+            <FaBars className="text-white" />
+          )}
         </div>
       </div>
       {/* Mobile Menu */}
