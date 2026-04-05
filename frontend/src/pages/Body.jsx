@@ -2,7 +2,7 @@ import React, { useEffect, useState } from "react";
 import img2 from "../assets/images/bg.jpg";
 import { motion } from "framer-motion";
 import Navbar from "../components/Navbar";
-
+import { Link } from "react-router-dom";
 const Body = () => {
   const [hasScrolled, setHasScrolled] = useState(false);
 
@@ -33,7 +33,7 @@ const Body = () => {
       <div className="absolute inset-0 bg-black/60 z-[-1]" />
 
       {/* Navbar */}
-      <Navbar />
+      <Navbar isfixed={true} />
 
       {/* Content */}
       <motion.div
@@ -68,12 +68,15 @@ const Body = () => {
           transition={{ duration: 1.2, delay: 0.9 }}
           className="flex gap-4"
         >
-          <button className="bg-secondgreen transition hover:!text-[#014C2E] active:text-[#014C2E] md:active:text-white  cursor-pointer text-white p-3 px-6 md:px-12 text-lg rounded-md shadow-md shadow-gray-900  hover-fill-from-bottom2 ">
+          <Link
+            to="/shop"
+            className="bg-secondgreen transition hover:!text-secondprimary active:text-secondprimary md:active:text-white md:py-4 cursor-pointer text-white md:p-3 px-6 md:px-12 text-lg rounded-md shadow-md shadow-gray-900 hover-fill-from-bottom2"
+          >
             Let's Shop
-          </button>
-          <button className="bg-white text-secondorimary md:active:bg-secondorimary hover:text-white cursor-pointer  active:text-white md:active:text-white p-3 px-6 md:px-12 md:py-4 text-lg rounded-md shadow-md shadow-gray-900 transition hover-fill-from-bottom">
+          </Link>
+          <Link className="bg-white text-secondprimary md:active:bg-secondprimary hover:text-white cursor-pointer  active:text-white md:active:text-white md:p-3 px-6 md:px-12 md:py-4 text-lg rounded-md shadow-md shadow-gray-900 transition hover-fill-from-bottom">
             Learn More
-          </button>
+          </Link>
         </motion.div>
       </motion.div>
     </div>

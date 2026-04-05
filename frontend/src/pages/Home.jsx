@@ -1,5 +1,5 @@
 import React from "react";
-import Navbar from "../components/Navbar";
+// Navbar is included inside `Body` (fixed header), so don't import here
 import Body from "./Body";
 import Content from "../components/Services";
 import WhyUs from "../components/WhyUs";
@@ -9,7 +9,6 @@ import Contactus from "../components/Contactus";
 const Home = () => {
   return (
     <div className="overflow-x-hidden">
-      {/* <Navbar /> */}
       <Body />
       <Content />
       <WhyUs />

@@ -1,8 +1,9 @@
 import React, { useEffect, useState } from "react";
-import logo from "../assets/images/fflogo.png";
+import logo from "../assets/images/sitelogo.png";
 import { FaBars, FaTimes } from "react-icons/fa";
+import { Link } from "react-router-dom";
 
-const Navbar = () => {
+const Navbar = ({ isblack, isfixed }) => {
   const [menuOpen, setMenuOpen] = useState(false);
   const [scrolled, setScrolled] = useState(false);
 
@@ -21,15 +22,21 @@ const Navbar = () => {
 
   return (
     <nav
-      className={`w-full fixed top-0 left-0 z-50 transition-colors duration-500 ${
+      className={`w-full  ${
+        isfixed ? "fixed" : "relative"
+      }  top-0 left-0 z-50 transition-colors duration-500 ${
         scrolled
-          ? "bg-black md:text-white text-black shadow-md"
-          : "bg-transparent md:text-white text-black"
-      }`}
+          ? `bg-black ${
+              isblack && "bg-black"
+            }  md:text-white text-black shadow-md`
+          : ` ${
+              isblack ? "bg-black" : "bg-transparent"
+            } md:text-white text-blac`
+      } ${isblack && "bg-black"}`}
     >
       {" "}
       <div className="flex items-center justify-between py-4 px-6 md:px-12">
-        <img src={logo} alt="Logo" className="h-16 object-contain" />
+        <img src={logo} alt="Logo" className="h-24  object-contain" />
 
         {/* Desktop Menu */}
         <div className="hidden md:flex gap-8 text-lg font-semibold   items-center !text-black md:!text-white ">
@@ -39,9 +46,9 @@ const Navbar = () => {
           <a href="#" className="hover:text-primary transition">
             About
           </a>
-          <a href="#" className="hover:text-primary transition">
-            Products
-          </a>
+          <Link to="/shop" className="hover:text-primary transition">
+            Shop
+          </Link>
           <a href="#" className="hover:text-primary transition">
             Contact
           </a>
@@ -77,12 +84,12 @@ const Navbar = () => {
         >
           About
         </a>
-        <a
-          href="#"
+        <Link
+          to="/shop"
           className="py-2 text-lg font-medium hover:text-primary transition"
         >
-          Products
-        </a>
+          Shop
+        </Link>
         <a
           href="#"
           className="py-2 text-lg font-medium hover:text-primary transition"

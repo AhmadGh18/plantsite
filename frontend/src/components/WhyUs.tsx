@@ -4,17 +4,17 @@ import { FaLeaf, FaShippingFast, FaSmile } from "react-icons/fa";
 
 const features = [
   {
-    icon: <FaLeaf size={40} className="text-green-700" />,
+    icon: <FaLeaf size={40} className="text-primary" />,
     title: "Eco-Friendly",
     desc: "Our plants are grown organically and delivered with zero plastic packaging.",
   },
   {
-    icon: <FaShippingFast size={40} className="text-green-700" />,
+    icon: <FaShippingFast size={40} className="text-primary" />,
     title: "Fast Delivery",
     desc: "Get your favorite plants at your doorstep in less than 48 hours.",
   },
   {
-    icon: <FaSmile size={40} className="text-green-700" />,
+    icon: <FaSmile size={40} className="text-primary" />,
     title: "Customer Satisfaction",
     desc: "We prioritize your happiness with dedicated support and healthy plants.",
   },
