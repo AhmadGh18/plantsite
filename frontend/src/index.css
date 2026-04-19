@@ -3,14 +3,90 @@
 @import "tailwindcss";
 
 @theme {
-    --color-primary: #5B9138;
-    --color-secondprimary: #014C2E;
-    --color-secondgreen: #5B9138;
+    /* New Color Palette */
+    --color-dark: #3f5147;
+    --color-light: #e6e1d8;
+    --color-secondary: #8a7b6a;
+    --color-accent: #cbbfb0;
+    --color-muted: #9ba88e;
+    --color-highlight: #d6a77a;
+    --color-bgprimary: #e6e1d8;
 
+    /* Legacy */
+    --color-primary: #3f5147;
     --font-mainfont: "Signika Negative", sans-serif;
-
 }
 
+/* Global Styles */
+html {
+    scroll-behavior: smooth;
+}
+
+body {
+    background-color: #e6e1d8;
+    color: #8a7b6a;
+    font-weight: 300;
+}
+
+/* Typography */
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+    font-family: "Playfair Display", serif;
+    font-weight: 300;
+    letter-spacing: 0.05em;
+    color: #3f5147;
+}
+
+h1 {
+    font-size: clamp(2rem, 5vw, 3.5rem);
+    line-height: 1.2;
+}
+
+h2 {
+    font-size: clamp(1.75rem, 4vw, 2.75rem);
+    line-height: 1.3;
+}
+
+h3 {
+    font-size: clamp(1.25rem, 3vw, 1.75rem);
+}
+
+p {
+    line-height: 1.85;
+    letter-spacing: 0.02em;
+    color: #8a7b6a;
+}
+
+/* Links */
+a {
+    text-decoration: none;
+    transition: all 0.4s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+}
+
+/* Button Styles */
+button,
+a[role="button"] {
+    transition: all 0.3s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+    box-shadow: 0 4px 12px rgba(63, 81, 71, 0.1);
+}
+
+button:hover,
+a[role="button"]:hover {
+    box-shadow: 0 12px 24px rgba(63, 81, 71, 0.15);
+    transform: translateY(-3px);
+}
+
+button:active,
+a[role="button"]:active {
+    transform: translateY(-1px);
+    box-shadow: 0 6px 16px rgba(63, 81, 71, 0.12);
+}
+
+/* Keyframes */
 @keyframes zoom {
 
     0%,
@@ -27,6 +103,7 @@
     animation: zoom 12s ease-in-out infinite;
 }
 
+/* Hover Effects */
 .hover-fill-from-bottom {
     position: relative;
     overflow: hidden;
@@ -41,7 +118,6 @@
     width: 100%;
     height: 0%;
     background-color: #014C2E;
-    /* change to your hover color */
     color: white !important;
     z-index: -1;
     transition: height 0.3s ease;

@@ -13,7 +13,7 @@ const Navbar = ({ isblack, isfixed }) => {
 
   useEffect(() => {
     const handleScroll = () => {
-      setScrolled(window.scrollY > 400); // Trigger after 50px scroll
+      setScrolled(window.scrollY > 100);
     };
 
     window.addEventListener("scroll", handleScroll);
@@ -22,83 +22,92 @@ const Navbar = ({ isblack, isfixed }) => {
 
   return (
     <nav
-      className={`w-full  ${
-        isfixed ? "fixed" : "relative"
-      }  top-0 left-0 z-50 transition-colors duration-500 ${
+      className={`w-full ${
+        isfixed ? "sticky" : "relative"
+      } top-0 left-0 z-50 transition-all duration-300 ${
         scrolled
-          ? `bg-black ${
-              isblack && "bg-black"
-            }  md:text-white text-black shadow-md`
-          : ` ${
-              isblack ? "bg-black" : "bg-transparent"
-            } md:text-white text-blac`
-      } ${isblack && "bg-black"}`}
+          ? "bg-light/98 backdrop-blur-lg sticky shadow-md text-dark border-b border-accent/20"
+          : "bg-light/30 backdrop-blur-sm text-secondary"
+      }`}
     >
-      {" "}
-      <div className="flex items-center justify-between py-4 px-6 md:px-12">
-        <img src={logo} alt="Logo" className="h-24  object-contain" />
+      <div className="flex items-center justify-between py-4 px-6 md:px-14 lg:px-20">
+        <div className="flex-shrink-0">
+          <img src={logo} alt="Logo" className="h-13 md:h-16 object-contain" />
+        </div>
 
         {/* Desktop Menu */}
-        <div className="hidden md:flex gap-8 text-lg font-semibold   items-center !text-black md:!text-white ">
-          <a href="#" className="hover:text-primary transition">
+        <div className="hidden md:flex gap-14 text-md font-light items-center ml-auto">
+          <a
+            href="#"
+            className="relative group text-black hover:text-dark transition-colors duration-200 tracking-wide"
+          >
             Home
+            <span className="absolute bottom-0 left-0 w-0 h-1 bg-gradient-to-r from-highlight to-accent group-hover:w-full transition-all duration-300 rounded-full"></span>
           </a>
-          <a href="#" className="hover:text-primary transition">
+          <a
+            href="#"
+            className="relative group text-black hover:text-dark transition-colors duration-200 tracking-wide"
+          >
             About
+            <span className="absolute bottom-0 left-0 w-0 h-1 bg-gradient-to-r from-highlight to-accent group-hover:w-full transition-all duration-300 rounded-full"></span>
           </a>
-          <Link to="/shop" className="hover:text-primary transition">
+          <Link
+            to="/shop"
+            className="relative group text-black hover:text-dark transition-colors duration-200 tracking-wide"
+          >
             Shop
+            <span className="absolute bottom-0 left-0 w-0 h-1 bg-gradient-to-r from-highlight to-accent group-hover:w-full transition-all duration-300 rounded-full"></span>
           </Link>
-          <a href="#" className="hover:text-primary transition">
+          <a
+            href="#"
+            className="relative group text-black hover:text-dark transition-colors duration-200 tracking-wide"
+          >
             Contact
+            <span className="absolute bottom-0 left-0 w-0 h-1 bg-gradient-to-r from-highlight to-accent group-hover:w-full transition-all duration-300 rounded-full"></span>
           </a>
-          <button className="bg-primary text-white px-4 py-2 rounded-md hover:bg-opacity-80 transition">
-            Sign Up
-          </button>
         </div>
 
         {/* Mobile Hamburger Icon */}
-        <div className="md:hidden text-2xl cursor-pointer" onClick={toggleMenu}>
-          {menuOpen ? (
-            <FaTimes className="text-white" />
-          ) : (
-            <FaBars className="text-white" />
-          )}
+        <div
+          className="md:hidden text-2xl cursor-pointer text-secondary hover:text-dark transition-colors duration-200"
+          onClick={toggleMenu}
+        >
+          {menuOpen ? <FaTimes /> : <FaBars />}
         </div>
       </div>
+
       {/* Mobile Menu */}
       <div
-        className={`md:hidden flex flex-col items-center gap-4  absolute bg-white !justify-center  w-full overflow-hidden transition-all duration-300 ease-in-out ${
-          menuOpen ? "max-h-[500px] py-6" : "max-h-0"
+        className={`md:hidden absolute top-full left-0 w-full bg-light/98 backdrop-blur-lg border-b border-accent/20 overflow-hidden transition-all duration-300 ease-in-out ${
+          menuOpen ? "max-h-[400px] shadow-lg" : "max-h-0"
         }`}
       >
-        <a
-          href="#"
-          className="py-2 text-lg font-medium hover:text-primary transition"
-        >
-          Home
-        </a>
-        <a
-          href="#"
-          className="py-2 text-lg font-medium hover:text-primary transition"
-        >
-          About
-        </a>
-        <Link
-          to="/shop"
-          className="py-2 text-lg font-medium hover:text-primary transition"
-        >
-          Shop
-        </Link>
-        <a
-          href="#"
-          className="py-2 text-lg font-medium hover:text-primary transition"
-        >
-          Contact
-        </a>
-        <button className="mt-4 bg-primary text-white px-4 py-2 rounded-md hover:bg-opacity-80 transition">
-          Sign Up
-        </button>
+        <div className="flex flex-col items-center gap-0 py-6 px-6">
+          <a
+            href="#"
+            className="py-3 text-base font-light text-secondary hover:text-dark transition-colors duration-200 tracking-wide w-full text-center hover:bg-accent/5 rounded-md"
+          >
+            Home
+          </a>
+          <a
+            href="#"
+            className="py-3 text-base font-light text-secondary hover:text-dark transition-colors duration-200 tracking-wide w-full text-center hover:bg-accent/5 rounded-md"
+          >
+            About
+          </a>
+          <Link
+            to="/shop"
+            className="py-3 text-base font-light text-secondary hover:text-dark transition-colors duration-200 tracking-wide w-full text-center hover:bg-accent/5 rounded-md"
+          >
+            Shop
+          </Link>
+          <a
+            href="#"
+            className="py-3 text-base font-light text-secondary hover:text-dark transition-colors duration-200 tracking-wide w-full text-center hover:bg-accent/5 rounded-md"
+          >
+            Contact
+          </a>
+        </div>
       </div>
     </nav>
   );

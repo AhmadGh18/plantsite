@@ -1,19 +1,20 @@
 import React from "react";
-// Navbar is included inside `Body` (fixed header), so don't import here
+import Navbar from "../components/Navbar";
 import Body from "./Body";
-import Content from "../components/Services";
-import WhyUs from "../components/WhyUs";
+import ShopCollection from "../components/ShopCollection";
+import Features from "../components/Features";
 import Gallery from "../components/Gallery";
-import Contactus from "../components/Contactus";
+import CallToAction from "../components/CallToAction";
+import Footer from "../components/Footer";
 
 const Home = () => {
   return (
-    <div className="overflow-x-hidden">
+    <div>
+      <Navbar />
       <Body />
-      <Content />
-      <WhyUs />
-      <Gallery />
-      <Contactus />
+      <ShopCollection />
+      <Features />
+      <Footer />
     </div>
   );
 };

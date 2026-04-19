@@ -1,85 +1,77 @@
-import React, { useEffect, useState } from "react";
-import img2 from "../assets/images/bg.jpg";
-import { motion } from "framer-motion";
-import Navbar from "../components/Navbar";
-import { Link } from "react-router-dom";
+import React from "react";
+import banner from "../assets/images/realimage.png";
+import phonebaneer from "../assets/images/phonebanner.jpeg";
+
 const Body = () => {
-  const [hasScrolled, setHasScrolled] = useState(false);
-
-  useEffect(() => {
-    const handleScroll = () => {
-      if (!hasScrolled && window.scrollY > 0) {
-        setHasScrolled(true);
-      }
-    };
-
-    window.addEventListener("scroll", handleScroll);
-    return () => window.removeEventListener("scroll", handleScroll);
-  }, [hasScrolled]);
-
   return (
-    <div className="relative h-screen w-full font-mainfont overflow-hidden">
-      {/* Background Zoom Layer */}
+    <section
+      className="relative h-[100vh] w-full overflow-hidden"
+      aria-label="Homepage hero"
+    >
+      {/* Desktop fixed background */}
       <div
-        className={`absolute inset-0 bg-cover   bg-fixed z-[-2] transition-transform duration-1000 ${
-          hasScrolled ? "" : "animate-zoom "
-        }`}
+        className="hidden md:block absolute inset-0 bg-cover bg-center"
         style={{
-          backgroundImage: `url(${img2})`,
+          backgroundImage: `url(${banner})`,
+          backgroundSize: "cover",
+          backgroundPosition: "bottom",
         }}
+        role="img"
+        aria-label="Living room styled with plants and natural decor"
       />
 
-      {/* Overlay */}
-      <div className="absolute inset-0 bg-black/60 z-[-1]" />
+      {/* Mobile fixed background */}
+      <div
+        className="md:hidden absolute inset-0 bg-cover bg-center"
+        style={{
+          backgroundImage: `url(${phonebaneer})`,
+          backgroundSize: "cover",
+          backgroundPosition: "center",
+        }}
+        role="img"
+        aria-label="Cozy plant styled corner for mobile"
+      />
 
-      {/* Navbar */}
-      <Navbar isfixed={true} />
+      {/* Light overlay for content readability */}
+      <div className="absolute inset-0 bg-gradient-to-b from-light/5 via-light/10 to-light/20" />
 
-      {/* Content */}
-      <motion.div
-        initial={{ opacity: 0, y: 30 }}
-        animate={{ opacity: 1, y: 0 }}
-        transition={{ duration: 1 }}
-        className="relative z-10 h-full w-full flex flex-col justify-center items-center text-white text-center px-4"
-      >
-        <motion.h1
-          initial={{ opacity: 0, scale: 0.95 }}
-          animate={{ opacity: 1, scale: 1 }}
-          transition={{ duration: 1, delay: 0.3 }}
-          className="text-2xl md:text-5xl font-bold mb-4"
-        >
-          Plants are the silent architects of life,
-          <br className="hidden md:block" />
-          weaving air, shade, and nourishment into the world.
-        </motion.h1>
+      {/* Centered content container */}
+      <div className="absolute inset-0 flex items-center justify-center">
+        <div className="max-w-4xl px-6 sm:px-8 md:px-12 text-right">
+          {/* Main heading with italicized "home" */}
+          <h1 className="font-serif text-dark text-4xl sm:text-5xl md:text-6xl lg:text-7xl leading-tight font-light tracking-wide">
+            Bring a touch of paradise into your{" "}
+            <span className="italic">home</span>.
+          </h1>
 
-        <motion.h6
-          initial={{ opacity: 0 }}
-          animate={{ opacity: 1 }}
-          transition={{ duration: 1.2, delay: 0.6 }}
-          className="text-sm md:text-lg mb-6"
-        >
-          Nature’s quiet power lies in every leaf and stem.
-        </motion.h6>
+          {/* Subheading - Think green */}
+          <p className="mt-8 font-serif text-secondary text-xl sm:text-2xl md:text-3xl italic font-light tracking-wide">
+            Think green
+          </p>
 
-        <motion.div
-          initial={{ opacity: 0, y: 20 }}
-          animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 1.2, delay: 0.9 }}
-          className="flex gap-4"
-        >
-          <Link
-            to="/shop"
-            className="bg-secondgreen transition hover:!text-secondprimary active:text-secondprimary md:active:text-white md:py-4 cursor-pointer text-white md:p-3 px-6 md:px-12 text-lg rounded-md shadow-md shadow-gray-900 hover-fill-from-bottom2"
-          >
-            Let's Shop
-          </Link>
-          <Link className="bg-white text-secondprimary md:active:bg-secondprimary hover:text-white cursor-pointer  active:text-white md:active:text-white md:p-3 px-6 md:px-12 md:py-4 text-lg rounded-md shadow-md shadow-gray-900 transition hover-fill-from-bottom">
-            Learn More
-          </Link>
-        </motion.div>
-      </motion.div>
-    </div>
+          {/* Description */}
+          <p className="mt-10 text-secondary text-base sm:text-lg md:text-xl font-light leading-relaxed tracking-normal max-w-3xl mx-auto">
+            Handcrafted home decor inspired by nature
+            <br />
+            to create calm, beautiful spaces.
+          </p>
+
+          {/* Shop Now button */}
+          <div className="mt-20 flex justify-end">
+            <a
+              href="/shop"
+              className="bg-highlight hover:bg-accent text-dark px-14 py-4 rounded-full font-light text-base tracking-wider uppercase border-2 border-highlight hover:border-accent transition-all duration-300 inline-flex items-center gap-3 group shadow-lg hover:shadow-2xl hover:shadow-highlight/30"
+              aria-label="Shop now"
+            >
+              Shop Now
+              <span className="ml-1 group-hover:translate-x-2 transition-transform duration-300">
+                ↗
+              </span>
+            </a>
+          </div>
+        </div>
+      </div>
+    </section>
   );
 };
 

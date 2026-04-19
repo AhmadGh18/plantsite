@@ -4,11 +4,17 @@ module.exports = {
     extend: {
       colors: {
         primary: "var(--color-primary)",
-        secondprimary: "var(--color-secondprimary)",
-        secondgreen: "var(--color-secondgreen)",
+        secondary: "var(--color-secondary)",
+        accent: "var(--color-accent)",
+        highlight: "var(--color-highlight)",
+        dark: "var(--color-dark)",
+        light: "var(--color-light)",
+        muted: "var(--color-muted)",
+        bgprimary: "var(--color-bgprimary)",
       },
       fontFamily: {
         mainfont: ["Signika Negative", "sans-serif"],
+        serif: ["Playfair Display", "serif"],
       },
     },
   },
