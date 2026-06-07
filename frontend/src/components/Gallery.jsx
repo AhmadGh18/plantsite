@@ -11,6 +11,7 @@ const Gallery = () => {
   const displayedItems = showAll ? products : products.slice(0, 8);
 
   return (
+  
     <section ref={ref} className="py-16 bg-white font-mainfont">
       <motion.h2
         initial={{ opacity: 0, y: 20 }}
