@@ -72,7 +72,7 @@ const Contactus = () => {
                   href="mailto:support@homeparadis.com"
                   className="underline text-primary"
                 >
-                  support@homeparadis.com
+                  support@homeparadis.comssss
                 </a>
               </p>
               <p className="flex items-center gap-2">
